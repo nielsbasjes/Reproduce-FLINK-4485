@@ -6,8 +6,6 @@ import org.apache.flink.api.java.DataSet;
 import org.apache.flink.api.java.ExecutionEnvironment;
 import org.apache.flink.api.java.io.PrintingOutputFormat;
 import org.apache.flink.api.java.tuple.Tuple1;
-import org.apache.flink.core.fs.FileSystem;
-import org.apache.flink.core.fs.Path;
 import org.apache.hadoop.hbase.client.Result;
 import org.apache.hadoop.hbase.client.Scan;
 
@@ -20,12 +18,7 @@ public class Main implements Serializable {
   }
 
   private int run() throws Exception {
-    String directoryName = "test-FLINK-4485";
     String tableName = "test";
-
-    Path directory = new Path(directoryName);
-    FileSystem fs = directory.getFileSystem();
-    fs.delete(directory, true);
 
     // Set up the execution environment
     final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
